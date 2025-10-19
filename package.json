@@ -1,6 +1,6 @@
 {
     "name": "gq7zip",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "A wrapper module for handling 7z compressed files",
     "main": "app.js",
     "node_version": "18.20.2",
@@ -9,7 +9,8 @@
     "dependencies": {
       "7zip-bin":"5.2.0",
       "node-7z":"3.0.0",
-      "fix-path":"3.0.0"
+      "fix-path":"3.0.0",
+      "node-unrar-js":""
     },
     "devDependencies":{
       "coffeescript":"2.0.0",

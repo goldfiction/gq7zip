@@ -21,6 +21,11 @@ This is a module to make 7zip function easy to use with node.js.
 ** "nodemon":"3.1.10"
 ** "gqtest":"^0.0.12"
 
+** note: to be able to compress rar file, you need to "apt install rar". This module assume you have rar installed. we can not supply rar as it is proprietary. 
+** As there is no exisiting module for compressing rar file in node npm repo, we had to use command line to execute rar compression with a childprocess call (it is still automatic by code). 
+** please make sure rar file (o.folder) is a single folder. We have ensured it to be recursive.
+
+
 ### Installing
 
 git clone git@github.com:goldfiction/gq7zip.git

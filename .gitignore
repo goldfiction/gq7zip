@@ -1,10 +1,12 @@
 *.log
-node_modules
+node_modules/
+node_modules_*/
 build
 npm-debug.log
 .env
 .DS_Store
 report.json
-output
-7ztest2.7z
+output*/
+compressed
+7ztest2.*
 package-lock.json
