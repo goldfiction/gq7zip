@@ -5,6 +5,7 @@
     "main": "app.js",
     "node_version": "18.20.2",
     "repository":"git@github.com:goldfiction/gq7zip.git",
+    "private":false,
     "dependencies": {
       "7zip-bin":"5.2.0",
       "node-7z":"3.0.0",
