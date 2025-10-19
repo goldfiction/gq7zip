@@ -23,16 +23,16 @@ compressedFolder='./test/compressed'
 checkHash="89b5c851ae8092be15177acee6b73f43e7de9c27cbb90f75c50fa12357a15b44"
 #checkHash2="888dae7ee4aea95ae186cec35832dac8bed9060f8ec48f9803f16fd7986d8245"
 checkHash2="76c2b1ead811a96396d11279608b6e2ccbfa3cb3bca3a2dadce36b1064b2cfa2"
+password="1111"
 
 category="should be able to "
 
-after=(done)->
-  _7z.deleteFolder {folder:outputDirectory},(e,r)->
-    _7z.deleteFolder {folder:outputDirectoryZip},(e,r)->
-      _7z.deleteFolder {folder:outputDirectoryRar},(e,r)->
-        _7z.deleteFolder {folder:compressedFolder},(e,r)->
-          if done
-            done e
+after=()->
+  await _7z.deleteFolder {folder:outputDirectory}
+  await _7z.deleteFolder {folder:outputDirectoryZip}
+  await _7z.deleteFolder {folder:outputDirectoryRar}
+  await _7z.deleteFolder {folder:compressedFolder}
+  return null
 
 f1={}
 f1.name=category+"run"
@@ -44,7 +44,7 @@ f2.name=category+"extract 7ztest.7z"
 f2.test=(done)->
   _7z.uncompress
     file:_7zfile
-    password:"1111"
+    password:password
     $progress:false
     outputDirectory:outputDirectory
   ,(e,r)->
@@ -60,7 +60,7 @@ f3.test=(done)->
   _7z.compress
     archive:_7zfile2
     folder:checkDirectory+"/*"
-    password:"1111"
+    password:password
     $progress:false
   ,(e,r)->
     _7z.hash _7zfile2,(e,hash)->
@@ -71,7 +71,12 @@ f3.test=(done)->
 f4={}
 f4.name=category+"extract 7ztest.zip"
 f4.test=(done)->
-  _7z.uncompress {file:_zipfile,password:"1111",$progress:false,outputDirectory:outputDirectoryZip},(e,r)->
+  _7z.uncompress 
+    file:_zipfile
+    password:password
+    $progress:false
+    outputDirectory:outputDirectoryZip
+  ,(e,r)->
     _7z.countFile {directory:checkDirectoryZip},(e,num)->
       assert.equal num,4
       dfile=fs.readFileSync(checkDirectoryZip+"/"+"d.txt").toString()
@@ -84,7 +89,7 @@ f5.test=(done)->
   _7z.compress 
     archive:_zipfile2
     folder:checkDirectoryZip+"/*"
-    password:"1111"
+    password:password
     $progress:false
   ,(e,r)->
     if e
@@ -95,14 +100,19 @@ f5.test=(done)->
     fs.stat _zipfile2,(e,stat)->
       if e
         log e.stack
-      log stat
+      #log stat
       assert.equal stat.size,514
       done(e)
 
 f6={}
 f6.name=category+"extract 7ztest.rar"
 f6.test=(done)->
-  _7z.uncompress {file:_rarfile,password:"1111",$progress:false,outputDirectory:outputDirectoryRar},(e,r)->
+  _7z.uncompress
+    file:_rarfile
+    password:password
+    $progress:false
+    outputDirectory:outputDirectoryRar
+  ,(e,r)->
     if e
       log e.stack
     _7z.countFile {directory:checkDirectoryRar},(e,num)->
@@ -118,7 +128,12 @@ f7.name=category+"compress folder to rar"
 # repo, we had to use command line to execute rar compression manually
 # please make sure rarfile is a single folder for compression to be successful. We have supplied it to be recursive.
 f7.test=(done)->
-  _7z.compress {archive:_rarfile2,folder:checkDirectoryRar+"/*",password:"1111",$progress:false},(e,r)->
+  _7z.compress 
+    archive:_rarfile2
+    folder:checkDirectoryRar+"/*"
+    password:password
+    $progress:false
+  ,(e,r)->
     if e
       log e.stack
     assert.equal fs.existsSync(_rarfile2),true
@@ -139,6 +154,6 @@ doingtest=()->
   tests.add(f7.name,f7.test)
   tests.run null,(e,r)->
     tests.printResult(e,r)
-    #after()
+    after()
 
 doingtest()

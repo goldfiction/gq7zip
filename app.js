@@ -82,7 +82,10 @@ deleteFolder=function(o,cb){
   if(!!!o.folder)
     cb("no folder specified")
   else
-    fs.rm(o.folder,{recursive:true,force:true},cb)
+    fs.rm(o.folder,{recursive:true,force:true},function(e,r){
+      if(cb)
+        cb(e,r)
+    })
 }
 
 function calculateFileHash(filePath, algorithm = 'sha256') {

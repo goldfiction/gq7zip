@@ -6,7 +6,7 @@ npm-debug.log
 .env
 .DS_Store
 report.json
-output*/
+output/
 compressed
 7ztest2.*
 package-lock.json

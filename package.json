@@ -1,6 +1,6 @@
 {
     "name": "gq7zip",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "A wrapper module for handling 7z compressed files",
     "main": "app.js",
     "node_version": "18.20.2",
