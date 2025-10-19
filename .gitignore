@@ -1,0 +1,10 @@
+*.log
+node_modules
+build
+npm-debug.log
+.env
+.DS_Store
+report.json
+output
+*.7z
+package-lock.json
