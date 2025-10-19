@@ -1,12 +1,13 @@
 {
     "name": "gq7zip",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A wrapper module for handling 7z compressed files",
     "main": "app.js",
     "node_version": "18.20.2",
+    "repository":"git@github.com:goldfiction/gq7zip.git",
     "dependencies": {
-      "7zip-bin":"",
-      "node-7z":"",
+      "7zip-bin":"5.2.0",
+      "node-7z":"3.0.0",
       "fix-path":"3.0.0"
     },
     "devDependencies":{
@@ -16,8 +17,7 @@
     },
     "scripts": {
       "start": "export NODE_OPTIONS=--openssl-legacy-provider; coffee app.coffee",
-      "test:node": "node --require coffeescript/register test/test.coffee",
-      "test": "export USE_SYSTEM_7ZA=true; coffee test/test.coffee",
+      "test": "node --require coffeescript/register test/test.coffee",
       "test:watch":"nodemon --delay 2 -q -x \"npm test\"",
       "test:slow": "mocha --openssl-legacy-provider --require coffeescript/register --no-color --reporter min -t 20000 test/test.slow.coffee",
       "inst": "npm install --no-bin-links --no-optional --omit=optional --ignore-scripts",

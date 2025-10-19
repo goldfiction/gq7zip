@@ -1,62 +1,43 @@
-# Project Title
+# gq7zip
 
-Simple overview of use/purpose.
+A wrapper module for handling 7z compressed files.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This is a module to make 7zip function easy to use with node.js.
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* require using node.js container node-18.20.8-slim
+* require node.js 18.20.8
+* dependencies include:
+** "7zip-bin":"5.2.0"
+** "node-7z":"3.0.0"
+** "fix-path":"3.0.0"
+* devDependencies include:
+** "coffeescript":"2.0.0"
+** "nodemon":"3.1.10"
+** "gqtest":"^0.0.12"
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+git clone git@github.com:goldfiction/gq7zip.git
+npm run-script inst
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+to find usage, checkout /test/test.coffee
 
 ## Authors
 
-Contributors names and contact info
+[@glidev5](glidev5@gmail.com)
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the Apache-2 License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
