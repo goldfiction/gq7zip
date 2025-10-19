@@ -6,5 +6,5 @@ npm-debug.log
 .DS_Store
 report.json
 output
-*.7z
+7ztest2.7z
 package-lock.json
